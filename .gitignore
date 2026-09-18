@@ -38,3 +38,10 @@ Thumbs.db
 
 # misc
 *.pem
+
+# leftover nested-repo metadata from apps/web's create-next-app scaffold
+# (folded into this repo; kept only as a local backup, not tracked)
+.git-scaffold-backup/
+
+# local design-hook scan cache (transient, machine-specific)
+**/.impeccable/hook.cache.json
