@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "gradient-text",
+        "value": "*",
+        "files": [
+          "apps/web/app/page.tsx"
+        ],
+        "createdAt": "2026-09-18T08:28:26.314Z",
+        "reason": "approved Stitch comp screens/home.png shows this exact cyan-to-purple gradient treatment on the hero heading's second line; visual source of truth per task brief"
+      }
+    ]
+  }
+}
