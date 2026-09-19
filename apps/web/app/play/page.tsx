@@ -55,7 +55,9 @@ export default function PlaySetupPage() {
     soundEngine.playClick();
     updateSettings({ defaultDifficulty: difficulty, cardTheme: theme });
     const params = new URLSearchParams({ difficulty, mode, theme });
-    router.push(`/play/game?${params.toString()}`);
+    // scroll: false — the gameplay page brings the board into view itself
+    // once it mounts; Next's default scroll-to-top would otherwise race it.
+    router.push(`/play/game?${params.toString()}`, { scroll: false });
   };
 
   useEffect(() => {

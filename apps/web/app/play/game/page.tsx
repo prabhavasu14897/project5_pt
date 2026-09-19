@@ -36,6 +36,7 @@ function isThemeId(v: string | null | undefined): v is ThemeId {
 function GameplayContent() {
   const searchParams = useSearchParams();
   const startedRef = useRef(false);
+  const gridSectionRef = useRef<HTMLDivElement>(null);
 
   const startGame = useGameStore((s) => s.startGame);
   const selectCard = useGameStore((s) => s.selectCard);
@@ -99,6 +100,22 @@ function GameplayContent() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // Larger grids (6x6+) can push well below the fold under the header/HUD
+  // stack, so bring the board into view once the game actually starts.
+  // Deliberately a separate effect keyed on real game state (not nested in
+  // the ref-guarded mount effect above) — that guard's setTimeout gets
+  // scheduled-then-cancelled by React StrictMode's dev-mode double-invoke,
+  // since the guard blocks the second pass from ever rescheduling it.
+  const hasScrolledRef = useRef(false);
+  useEffect(() => {
+    if (status !== "playing" || hasScrolledRef.current) return;
+    hasScrolledRef.current = true;
+    const scrollTimer = setTimeout(() => {
+      gridSectionRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    }, 200);
+    return () => clearTimeout(scrollTimer);
+  }, [status]);
+
   const score = useGameStore((s) => s.score);
   const isDailyChallenge = useGameStore((s) => s.isDailyChallenge);
   const config = DIFFICULTIES[difficulty];
@@ -156,7 +173,10 @@ function GameplayContent() {
 
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_320px]">
           <div className="flex flex-col gap-4">
-            <div className="flex items-center justify-center rounded-lg border border-border bg-surface-1/40 p-3 sm:p-5">
+            <div
+              ref={gridSectionRef}
+              className="flex items-center justify-center rounded-lg border border-border bg-surface-1/40 p-3 sm:p-5"
+            >
               <GameGrid
                 cards={cards}
                 cols={config.cols}
