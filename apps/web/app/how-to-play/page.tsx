@@ -44,7 +44,7 @@ const STEPS = [
 ];
 
 const POWER_UPS = [
-  { key: "1", label: "Peek / Pulse Scan", description: "Briefly flashes 4 random unmatched tiles for 1.5s to give you tactical placement coordinates.", icon: Eye },
+  { key: "1", label: "Peek / Pulse Scan", description: "Briefly flashes 4 random unmatched tiles for 2s to give you tactical placement coordinates.", icon: Eye },
   { key: "2", label: "Time Freeze", description: "Completely pauses the match countdown clock for 5 seconds, giving you time to deliberate moves.", icon: Snowflake },
   { key: "3", label: "Hint Pair Beacon", description: "Illuminates the borders of one guaranteed match on the board with a glowing purple outline.", icon: Lightbulb },
   { key: "4", label: "Grid Scramble", description: "Shuffles positions of all remaining unmatched cards for a fresh read, refreshing your odds.", icon: ShuffleIcon },

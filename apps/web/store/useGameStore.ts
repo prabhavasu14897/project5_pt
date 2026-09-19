@@ -190,6 +190,7 @@ export const useGameStore = create<GameStoreState>((set, get) => ({
     });
 
     if (resolvedModifiers.quickPeek) {
+      const initialLookMs = 10000;
       const revealTimer = setTimeout(() => {
         set((s) => ({
           cards: s.cards.map((c) => ({ ...c, state: "revealed" as const })),
@@ -201,7 +202,7 @@ export const useGameStore = create<GameStoreState>((set, get) => ({
             c.state === "matched" ? c : { ...c, state: "hidden" as const },
           ),
         }));
-      }, 120 + SCORING.mismatchHoldMs + 400);
+      }, 120 + initialLookMs);
       set((s) => ({ timers: [...s.timers, revealTimer, hideTimer] }));
     }
   },
@@ -333,7 +334,7 @@ export const useGameStore = create<GameStoreState>((set, get) => ({
           ),
           peekActive: false,
         }));
-      }, 1500);
+      }, 2000);
       set((s) => ({ timers: [...s.timers, revealTimer, hideTimer] }));
       consume();
       return;

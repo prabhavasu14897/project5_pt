@@ -193,7 +193,7 @@ export const POWER_UPS: Record<string, PowerUpConfig> = {
   peek: {
     id: "peek",
     label: "Peek",
-    description: "Briefly reveal all unmatched cards for 1.5s.",
+    description: "Briefly reveal all unmatched cards for 2s.",
     charges: 2,
   },
   freeze: {

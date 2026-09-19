@@ -231,7 +231,7 @@ export default function PlaySetupPage() {
             <ModifierToggle
               icon={<Eye className="h-4 w-4" />}
               title="Quick Peek"
-              description="Reveal all cards for 1.5s at match start"
+              description="Reveal all cards for 10s at match start"
               checked={quickPeek}
               onChange={setQuickPeek}
             />

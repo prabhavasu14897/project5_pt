@@ -180,7 +180,7 @@ export default function SettingsPage() {
 
             <Row
               title="Show Card Preview at Start"
-              description="Brief 1-second flash of all cards when the matrix initializes"
+              description="Brief 10-second flash of all cards when the matrix initializes"
               checked={settings.showPreviewAtStart}
               onChange={(v) => updateSettings({ showPreviewAtStart: v })}
               className="mt-5"

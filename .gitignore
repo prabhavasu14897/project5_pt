@@ -45,3 +45,6 @@ Thumbs.db
 
 # local design-hook scan cache (transient, machine-specific)
 **/.impeccable/hook.cache.json
+
+.vercel
+.env*
